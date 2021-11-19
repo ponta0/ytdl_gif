@@ -11,8 +11,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/api/ytdl_gif/")
 def ytdl_gif(video_id: str, ss: int, t: int):
-    if (ss is None or t is None):
-        return "Invalid Query"
     filename = secrets.token_hex(16) + ".mp4"
     ytdl_options = {
         "format": "bestvideo[ext=mp4][height<=240]",
